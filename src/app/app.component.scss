@@ -1,0 +1,9 @@
+.main-container {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  height: calc(100vh - 50px);
+  mat-list {
+    width: 100%;
+  }
+}

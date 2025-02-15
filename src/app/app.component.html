@@ -1,8 +1,26 @@
-<ul>
+<!-- <ul>
   @for (item of (item$ | async); track item) {
     <li>
       {{ item.name }}
     </li>
   }
-</ul>
-<router-outlet></router-outlet>
+</ul> -->
+<mat-tab-group headerPosition="below">
+  @for (day of days; track day) {
+    <mat-tab [label]="day.slice(0, 3)|titlecase">
+      <div class="main-container">
+        <mat-list>
+          @for (timeSlot of timeSlots; track timeSlot) {
+            <mat-list-item lines="planData.[day][timeSlot].length">
+              <span matListItemTitle>{{timeSlot}}</span>
+              @for (plan of $any($any(planData)[day])[timeSlot]; track plan) {
+                <span matListItemLine>{{plan}}</span>
+              }
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          }
+        </mat-list>
+      </div>
+    </mat-tab>
+  }
+</mat-tab-group>
